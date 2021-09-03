@@ -19,7 +19,7 @@ using namespace llvm;
 namespace
 {
     // Reaching Definition Analysis Pass
-    struct RDA : public FunctionPass
+    class RDA : public FunctionPass
     {
     public:
         static char ID;
@@ -72,6 +72,9 @@ namespace
                         if (storeInst->getPointerOperand()->hasName())
                         {
                             std::string name = storeInst->getPointerOperand()->getName().str();
+                            // errs() << "||||||||||||||||||||||||||||\n";
+                            // errs() << storeInst->getPointerOperand();
+                            // errs() << "||||||||||||||||||||||||||||\n";
                             names.insert(std::pair<unsigned, std::string>(indexCount, name));
                             if (allvar.find(name) != allvar.end())
                             {

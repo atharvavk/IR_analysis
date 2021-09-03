@@ -8,7 +8,7 @@
 clang -O0 -emit-llvm -fno-discard-value-names -S hello.c
 
 #Creates optimizer (Function pass) from given CPP file and makes executable shared object for he same
-clang -fPIC -g3 -shared -o sharedObject.so part1.cpp
+clang -fPIC -g3 -shared -o sharedObject.so demo.cpp
 
 #runs the optimizer on given IR
 opt -load sharedObject.so --rda hello.ll
