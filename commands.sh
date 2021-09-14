@@ -11,4 +11,4 @@ clang -O0 -emit-llvm -fno-discard-value-names -S hello.c
 clang -fPIC -g3 -shared -o sharedObject.so demo.cpp
 
 #runs the optimizer on given IR
-opt -load sharedObject.so --rda hello.ll
+opt -load sharedObject.so -dot-callgraph hello.ll

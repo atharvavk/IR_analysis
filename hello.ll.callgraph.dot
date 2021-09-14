@@ -1,0 +1,10 @@
+digraph "Call graph: hello.ll" {
+	label="Call graph: hello.ll";
+
+	Node0x2123980 [shape=record,label="{print2}"];
+	Node0x2123a30 [shape=record,label="{print}"];
+	Node0x2123a30 -> Node0x2123a30;
+	Node0x2123a30 -> Node0x2123980;
+	Node0x2123b70 [shape=record,label="{main}"];
+	Node0x2123b70 -> Node0x2123a30;
+}

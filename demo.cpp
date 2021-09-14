@@ -31,7 +31,16 @@ namespace
     public:
         bool runOnFunction(Function &f) override
         {
+            constructControlFlowGraph(f);
 
+            return true;
+        }
+
+        void constructCallGraph(Function &f){
+
+        }
+
+        void constructControlFlowGraph(Function &f){
             std::unordered_map<BasicBlock *, std::set<BasicBlock *>> CFG;
             errs() << "\n\nFunction : " << f.getName() << "\n";
             for (Function::iterator bb = f.begin(); bb != f.end(); ++bb)
@@ -40,6 +49,7 @@ namespace
                 errs() << "\tBasic Block : " << bb->getName() << "\n";
                 for (BasicBlock::iterator i = (*bb).begin(); i != (*bb).end(); ++i)
                 {
+
                     if (BranchInst *bi = dyn_cast_or_null<BranchInst>(&*i))
                     {
                         for (int i = 0; i < bi->getNumSuccessors(); i++)
@@ -50,7 +60,6 @@ namespace
                     }
                 }
             }
-            return true;
         }
     };
 }
